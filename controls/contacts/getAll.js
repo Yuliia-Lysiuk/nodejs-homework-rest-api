@@ -1,4 +1,3 @@
-// const { listContacts } = require('../../models/contacts');
 const { Contact } = require('../../models');
 
 const getAll = async (req, res, next) => {
