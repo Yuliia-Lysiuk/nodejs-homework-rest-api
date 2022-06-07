@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { auth } = require('../../controls');
 
-const { joiRegisterSchema } = require('../../models/user');
+const { joiRegisterSchema, joiLoginSchema } = require('../../models/user');
 
 const { addValidation, ctrlWrapper } = require('../../middlewares/index');
 
@@ -13,5 +13,7 @@ router.post(
   addValidation(joiRegisterSchema),
   ctrlWrapper(auth.register)
 );
+
+router.post('/login', addValidation(joiLoginSchema), ctrlWrapper(auth.login));
 
 module.exports = router;

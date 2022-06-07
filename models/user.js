@@ -22,6 +22,7 @@ const userSchema = Schema(
   { versionKey: false, timestamps: true }
 );
 
+
 const User = model('user', userSchema);
 
 const joiRegisterSchema = Joi.object({
@@ -45,9 +46,6 @@ const joiLoginSchema = Joi.object({
       tlds: { allow: ['com', 'net'] },
     })
     .required(),
-  subscription: Joi.string()
-    .tag('starter', 'pro', 'business')
-    .default('starter'),
 });
 
 module.exports = { User, joiRegisterSchema, joiLoginSchema };
