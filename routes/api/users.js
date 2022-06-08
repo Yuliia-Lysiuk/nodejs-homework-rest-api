@@ -6,7 +6,13 @@ const { auth } = require('../../controls');
 
 const { joiRegisterSchema, joiLoginSchema } = require('../../models/user');
 
-const { addValidation, ctrlWrapper } = require('../../middlewares/index');
+const {
+  addValidation,
+  ctrlWrapper,
+  authSetup,
+} = require('../../middlewares/index');
+
+router.get('/current', authSetup, ctrlWrapper(auth.getCurrent));
 
 router.post(
   '/register',
