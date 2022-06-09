@@ -21,5 +21,6 @@ router.post(
 );
 
 router.post('/login', addValidation(joiLoginSchema), ctrlWrapper(auth.login));
-
+router.get('/logout', authSetup, ctrlWrapper(auth.logout));
+router.patch('/', authSetup, ctrlWrapper(auth.updateSubscription));
 module.exports = router;
