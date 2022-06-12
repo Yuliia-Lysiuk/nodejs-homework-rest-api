@@ -1,15 +1,12 @@
-const { joiSchema } = require('../models');
-
-const addValidation = async (req, res, next) => {
-  const { error } = joiSchema.validate(req.body);
-  if (error) {
-    return res.status(400).json({
-      status: 'error',
-      code: 400,
-      message: error.details[0].message,
-    });
-  }
-  next();
+const addValidation = (schema) => {
+  return (req, res, next) => {
+    const { error } = schema.validate(req.body);
+    if (error) {
+      error.status = 400;
+      next(error);
+    }
+    next();
+  };
 };
 
 module.exports = addValidation;
