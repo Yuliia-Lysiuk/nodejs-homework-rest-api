@@ -1,4 +1,5 @@
 const addValidation = require('./validationMiddleware');
 const ctrlWrapper = require('./ctrlWrapper');
 const authSetup = require('./authSetup');
-module.exports = { addValidation, ctrlWrapper, authSetup };
+const upload = require('./upload');
+module.exports = { addValidation, ctrlWrapper, authSetup, upload };
